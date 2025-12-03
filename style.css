@@ -1,0 +1,792 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+/* VARIABILE CULORI */
+:root {
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --bg-page-gradient: linear-gradient(180deg, #F8F7FF 0%, #FDFBFF 100%);
+    --bg-formula-page: #FBFBFF;
+
+    --algebra-light-bg: #FEF6F8;
+    --algebra-light-text: #EB5A9A;
+    --algebra-badge-bg: #FCE7F3;
+    --algebra-badge-text: #DB2777;
+    --algebra-gradient: linear-gradient(90deg, #F9A8D4 0%, #F472B6 100%);
+    --algebra-border: #F472B6;
+
+
+    --geometrie-light-bg: #F5F3FF;
+    --geometrie-light-text: #967AF7;
+    --geometrie-badge-bg: #EEF2FF;
+    --geometrie-badge-text: #4F46E5;
+    --geometrie-gradient: linear-gradient(90deg, #C4B5FD 0%, #A78BFA 100%);
+    --geometrie-border: #A78BFA;
+    
+
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --text-tertiary: #9CA3AF;
+
+    --card-bg: #FFFFFF;
+    --border-light: #F3F0FF;
+    --border-medium: #E5E7EB;
+    --shadow: 0 4px 12px rgba(139, 92, 246, 0.05);
+    --shadow-hover: 0 8px 24px rgba(139, 92, 246, 0.1);
+
+    --gradient-text: linear-gradient(90deg, #EC4899 0%, #8B5CF6 100%);
+}
+
+/*  RESETARE ȘI STILURI GLOBALE  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+.homepage-bg {
+    background: var(--bg-page-gradient);
+}
+.formulas-bg {
+    background: var(--bg-formula-page);
+}
+
+/* Container principal pentru centrare */
+main, header {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* COMPONENTE GENERALE (Butoane, Carduri, Badge-uri)  */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-algebra {
+    background: var(--algebra-gradient);
+    color: white;
+}
+.btn-geometrie {
+    background: var(--geometrie-gradient);
+    color: white;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    border: 1px solid var(--border-light);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+.section-subtitle {
+    font-size: 1.125rem;
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+/* HEADER (Pagina Principală)  */
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+}
+
+.logo-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.nav-desktop ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+.nav-desktop a {
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+}
+.nav-desktop a:hover {
+    color: var(--algebra-light-text);
+}
+
+/*  HERO SECTION  */
+.hero {
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+}
+
+.badge-hero {
+    background: #F5F3FF;
+    color: #6D28D9;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 99px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 1rem 0;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+.cta-buttons {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow);
+}
+.stat-card strong {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+/*  DOMAIN CARDS SECTION (Homepage) */
+.domain-cards-section {
+    padding: 2rem 0;
+}
+.domain-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .domain-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.card-domain {
+    padding: 2rem;
+}
+.card-domain-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+.card-domain.algebra .card-domain-icon { background: var(--algebra-light-bg); }
+.card-domain.geometrie .card-domain-icon { background: var(--geometrie-light-bg); }
+
+.card-domain h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+.card-domain.algebra h2 { color: var(--algebra-light-text); }
+.card-domain.geometrie h2 { color: var(--geometrie-light-text); }
+
+.card-domain p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+.card-domain ul {
+    list-style: '✓ ';
+    padding-left: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+}
+.btn-card-domain { color: white; font-weight: 600; }
+.btn-card-domain.algebra { background: var(--algebra-light-text); }
+.btn-card-domain.geometrie { background: var(--geometrie-light-text); }
+
+/* ======== FEATURES & ABOUT (Homepage) ======== */
+.features {
+    padding: 2rem 0;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.card-feature {
+    text-align: center;
+    padding: 2rem;
+}
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 0.75rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.icon-violet { background: #F5F3FF; color: #8B5CF6; }
+.icon-rose { background: #FEF6F8; color: #EC4899; }
+.icon-blue { background: #EFF6FF; color: #3B82F6; }
+
+.card-feature h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+.card-feature p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.about {
+    padding: 2rem 0;
+}
+.card-about {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2.5rem;
+}
+.badge-about {
+    background: #F5F3FF;
+    color: #6D28D9;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 99px;
+    margin-bottom: 1rem;
+}
+.card-about h2 {
+    font-size: 1.75rem;
+}
+.card-about p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+}
+
+.footer-main {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+    margin: 2rem auto 0;
+}
+.footer-main .logo {
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.footer-main p {
+    color: var(--text-tertiary);
+    font-size: 0.875rem;
+}
+
+/* STILURI PENTRU PAGINA FORMULELOR*/
+
+.header-sticky {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.btn-back {
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.btn-filter-mobile {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-medium);
+    background: var(--card-bg);
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+@media (min-width: 1024px) {
+    .btn-filter-mobile {
+        display: none;
+    }
+}
+
+/* LAYOUT PRINCIPAL (Sidebar + Content) */
+.page-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+@media (min-width: 1024px) {
+    .page-layout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+/*  SIDEBAR */
+.sidebar {
+    flex-shrink: 0;
+    width: 100%;
+}
+@media (min-width: 1024px) {
+    .sidebar {
+        width: 320px;
+        position: sticky;
+        top: 80px;
+    }
+}
+@media (max-width: 1023px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+.card-filters {
+    border: 1px solid var(--border-light);
+    padding: 1rem;
+    background: #FFFFFF;
+}
+.filter-group {
+    margin-bottom: 1rem;
+}
+.filter-group h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+.icon-emoji {
+    font-size: 1rem;
+}
+
+/* butoane */
+.btn-filter {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 1rem; /* Mărit font */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-primary);
+    background: #F8F9FA;
+}
+.btn-filter.active.btn-algebra {
+    background: var(--algebra-gradient);
+    color: white;
+    font-weight: 600;
+}
+.btn-filter.active.btn-geometrie {
+    background: var(--geometrie-gradient);
+    color: white;
+    font-weight: 600;
+}
+
+/*  butoane Teme */
+.btn-filter-tema {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.25rem;
+    border: none;
+    border-radius: 0.75rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-primary);
+    background: transparent;
+}
+.btn-filter-tema:hover {
+    background: #F8F9FA;
+}
+.btn-filter-tema.active {
+    background: #E9ECEF;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+
+.btn-reset {
+    width: 100%;
+    background: transparent;
+    color: #EF4444;
+    border: none;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.btn-reset:hover {
+    background: #FEF2F2;
+}
+
+.card-quote {
+    background: var(--geometrie-gradient);
+    color: white;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+}
+.card-quote span {
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+.card-quote p {
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+.card-quote em {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+/* MAIN CONTENT (Search + Grid)*/
+.main-content {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.search-bar {
+    margin-bottom: 1rem;
+    position: relative;
+}
+.search-bar input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-light);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+}
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--geometrie-border);
+    box-shadow: 0 0 0 3px var(--geometrie-light-bg);
+}
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--geometrie-border);
+}
+
+.active-filters-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Mărit spațiu */
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-light);
+}
+.results-count {
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-right: 0.5rem;
+}
+#active-filters-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.badge-filter {
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.badge-filter.algebra { 
+    background: var(--algebra-badge-bg); 
+    color: var(--algebra-badge-text); 
+}
+.badge-filter.geometrie { 
+    background: var(--geometrie-badge-bg); 
+    color: var(--geometrie-badge-text); 
+}
+.badge-filter.tema { 
+    background: #E0F2FE; 
+    color: #0284C7; 
+}
+.badge-filter.search {
+    background: #FFFBEB;
+    color: #B45309;
+}
+
+
+/* FORMULA GRID & CARDS */
+.formula-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+@media (min-width: 768px) {
+    .formula-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1280px) {
+    .formula-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Stilizare pentru mesajul "Nu au fost găsite" */
+#no-results-message {
+    grid-column: 1 / -1; /* Ocupă tot rândul */
+    text-align: center;
+    padding: 3rem;
+    background: var(--card-bg);
+    border: 1px dashed var(--border-medium);
+    border-radius: 1rem;
+    color: var(--text-secondary);
+}
+#no-results-message h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.formula-card {
+    background: var(--card-bg);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    /* Adăugăm bordura de sus */
+    border-top-width: 4px;
+    border-top-style: solid;
+}
+.formula-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+.formula-card.algebra { border-top-color: var(--algebra-border); }
+.formula-card.geometrie { border-top-color: var(--geometrie-border); }
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+.card-icon {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.formula-card.algebra .card-icon { 
+    background: var(--algebra-light-bg); 
+    color: var(--algebra-light-text);
+}
+.formula-card.geometrie .card-icon { 
+    background: var(--geometrie-light-bg); 
+    color: var(--geometrie-light-text);
+}
+
+.card-header h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.card-display {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    margin: 0 1rem;
+    border-radius: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.formula-card.algebra .card-display { background: var(--algebra-light-bg); }
+.formula-card.geometrie .card-display { background: var(--geometrie-light-bg); }
+
+/* Watermark icon */
+.card-display::after {
+    font-family: var(--font-main);
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    font-size: 2.5rem;
+    opacity: 0.15;
+    z-index: 0;
+}
+.formula-card.algebra .card-display::after {
+    content: '🧮';
+    color: var(--algebra-light-text);
+}
+.formula-card.geometrie .card-display::after {
+    content: '📐';
+    color: var(--geometrie-light-text);
+}
+
+.card-display code {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+}
+
+.card-description {
+    padding: 1rem;
+    margin: 1rem 1rem 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    background: #F9FAFB;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+.card-description span {
+    color: var(--text-tertiary);
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-top: 1px solid var(--border-light);
+    font-size: 0.875rem;
+    margin-top: auto; /* Împinge footer-ul în jos */
+}
+.tema-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.formula-card.algebra .tema-dot { background: var(--algebra-border); }
+.formula-card.geometrie .tema-dot { background: var(--geometrie-border); }
+
+.tema-nume {
+    color: var(--text-secondary);
+    flex-grow: 1;
+}
+
+.badge-domeniu {
+    padding: 0.125rem 0.5rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+.badge-domeniu.algebra { 
+    background: var(--algebra-badge-bg); 
+    color: var(--algebra-badge-text); 
+}
+.badge-domeniu.geometrie { 
+    background: var(--geometrie-badge-bg); 
+    color: var(--geometrie-badge-text); 
+}
