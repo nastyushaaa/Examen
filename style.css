@@ -1,6 +1,5 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
-
-/* VARIABILE CULORI */
 :root {
     --font-main: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -15,14 +14,12 @@
     --algebra-gradient: linear-gradient(90deg, #F9A8D4 0%, #F472B6 100%);
     --algebra-border: #F472B6;
 
-
     --geometrie-light-bg: #F5F3FF;
     --geometrie-light-text: #967AF7;
     --geometrie-badge-bg: #EEF2FF;
     --geometrie-badge-text: #4F46E5;
     --geometrie-gradient: linear-gradient(90deg, #C4B5FD 0%, #A78BFA 100%);
     --geometrie-border: #A78BFA;
-    
 
     --text-primary: #111827;
     --text-secondary: #4B5563;
@@ -37,7 +34,6 @@
     --gradient-text: linear-gradient(90deg, #EC4899 0%, #8B5CF6 100%);
 }
 
-/*  RESETARE ȘI STILURI GLOBALE  */
 * {
     margin: 0;
     padding: 0;
@@ -48,7 +44,19 @@ body {
     font-family: var(--font-main);
     color: var(--text-primary);
     line-height: 1.6;
+    background: var(--bg-page-gradient);
 }
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
 .homepage-bg {
     background: var(--bg-page-gradient);
 }
@@ -56,7 +64,6 @@ body {
     background: var(--bg-formula-page);
 }
 
-/* Container principal pentru centrare */
 main, header {
     width: 100%;
     max-width: 1280px;
@@ -66,14 +73,9 @@ main, header {
 
 h1, h2, h3, h4 {
     font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* COMPONENTE GENERALE (Butoane, Carduri, Badge-uri)  */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -87,10 +89,16 @@ a {
     transition: all 0.3s ease;
     font-size: 1rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
 }
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-hover);
+    color: white;
+}
+
+.btn:focus {
+    box-shadow: none;
 }
 
 .btn-algebra {
@@ -109,6 +117,10 @@ a {
     padding: 1.5rem;
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
+    flex-direction: column;
+}
+.card:hover {
+
 }
 
 .section-title {
@@ -124,7 +136,6 @@ a {
     margin-bottom: 2.5rem;
 }
 
-/* HEADER (Pagina Principală)  */
 .header-main {
     display: flex;
     justify-content: space-between;
@@ -144,6 +155,7 @@ a {
     align-items: center;
     font-size: 1.125rem;
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 .logo-icon {
@@ -164,6 +176,7 @@ a {
     display: flex;
     gap: 1.5rem;
     list-style: none;
+    margin: 0;
 }
 .nav-desktop a {
     font-weight: 500;
@@ -174,7 +187,6 @@ a {
     color: var(--algebra-light-text);
 }
 
-/*  HERO SECTION  */
 .hero {
     padding: 4rem 1.5rem 3rem;
     text-align: center;
@@ -186,6 +198,7 @@ a {
     font-weight: 500;
     padding: 0.35rem 0.75rem;
     border-radius: 99px;
+    display: inline-block;
 }
 
 .hero-title {
@@ -195,6 +208,7 @@ a {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 1rem 0;
+    line-height: 1.2;
 }
 
 .hero-subtitle {
@@ -234,7 +248,6 @@ a {
     font-weight: 600;
 }
 
-/*  DOMAIN CARDS SECTION (Homepage) */
 .domain-cards-section {
     padding: 2rem 0;
 }
@@ -250,6 +263,7 @@ a {
 }
 .card-domain {
     padding: 2rem;
+    height: 100%;
 }
 .card-domain-icon {
     font-size: 2.5rem;
@@ -273,16 +287,23 @@ a {
     margin-bottom: 1rem;
 }
 .card-domain ul {
-    list-style: '✓ ';
-    padding-left: 1.25rem;
+    list-style: none;
+    padding-left: 0;
     margin-bottom: 1.5rem;
     color: var(--text-secondary);
+}
+.card-domain ul li {
+    margin-bottom: 0.5rem;
+}
+.card-domain ul li::before {
+    content: '✓ ';
+    font-weight: bold;
+    margin-right: 0.5rem;
 }
 .btn-card-domain { color: white; font-weight: 600; }
 .btn-card-domain.algebra { background: var(--algebra-light-text); }
 .btn-card-domain.geometrie { background: var(--geometrie-light-text); }
 
-/* ======== FEATURES & ABOUT (Homepage) ======== */
 .features {
     padding: 2rem 0;
 }
@@ -299,6 +320,7 @@ a {
 .card-feature {
     text-align: center;
     padding: 2rem;
+    height: 100%;
 }
 .feature-icon {
     display: inline-flex;
@@ -339,6 +361,7 @@ a {
     padding: 0.35rem 0.75rem;
     border-radius: 99px;
     margin-bottom: 1rem;
+    display: inline-block;
 }
 .card-about h2 {
     font-size: 1.75rem;
@@ -363,10 +386,8 @@ a {
 .footer-main p {
     color: var(--text-tertiary);
     font-size: 0.875rem;
+    margin: 0;
 }
-
-/* STILURI PENTRU PAGINA FORMULELOR*/
-
 .header-sticky {
     display: flex;
     justify-content: space-between;
@@ -385,7 +406,17 @@ a {
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    background: transparent;
+    box-shadow: none;
+    padding: 0.5rem;
 }
+.btn-back:hover {
+    background: transparent;
+    color: var(--text-primary);
+    box-shadow: none;
+    transform: none;
+}
+
 .btn-filter-mobile {
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--border-medium);
@@ -400,7 +431,6 @@ a {
     }
 }
 
-/* LAYOUT PRINCIPAL (Sidebar + Content) */
 .page-layout {
     display: flex;
     flex-direction: column;
@@ -416,7 +446,7 @@ a {
     }
 }
 
-/*  SIDEBAR */
+/* SIDEBAR */
 .sidebar {
     flex-shrink: 0;
     width: 100%;
@@ -455,7 +485,6 @@ a {
     font-size: 1rem;
 }
 
-/* butoane */
 .btn-filter {
     width: 100%;
     padding: 0.75rem 1rem;
@@ -464,7 +493,7 @@ a {
     border-radius: 0.75rem;
     text-align: left;
     font-weight: 500;
-    font-size: 1rem; /* Mărit font */
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
     color: var(--text-primary);
@@ -481,7 +510,7 @@ a {
     font-weight: 600;
 }
 
-/*  butoane Teme */
+/* butoane Teme */
 .btn-filter-tema {
     width: 100%;
     padding: 0.75rem 1rem;
@@ -523,6 +552,8 @@ a {
 }
 .btn-reset:hover {
     background: #FEF2F2;
+    transform: none;
+    box-shadow: none;
 }
 
 .card-quote {
@@ -539,13 +570,13 @@ a {
 .card-quote p {
     font-size: 1.125rem;
     font-weight: 500;
+    margin-bottom: 0.5rem;
 }
 .card-quote em {
     font-size: 0.875rem;
     opacity: 0.8;
 }
 
-/* MAIN CONTENT (Search + Grid)*/
 .main-content {
     flex-grow: 1;
     width: 100%;
@@ -580,7 +611,7 @@ a {
 .active-filters-bar {
     display: flex;
     align-items: center;
-    gap: 0.75rem; /* Mărit spațiu */
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
     background: var(--card-bg);
@@ -603,26 +634,25 @@ a {
     border-radius: 99px;
     font-size: 0.875rem;
     font-weight: 500;
+    display: inline-flex;
+    align-items: center;
 }
-.badge-filter.algebra { 
-    background: var(--algebra-badge-bg); 
-    color: var(--algebra-badge-text); 
+.badge-filter.algebra {
+    background: var(--algebra-badge-bg);
+    color: var(--algebra-badge-text);
 }
-.badge-filter.geometrie { 
-    background: var(--geometrie-badge-bg); 
-    color: var(--geometrie-badge-text); 
+.badge-filter.geometrie {
+    background: var(--geometrie-badge-bg);
+    color: var(--geometrie-badge-text);
 }
-.badge-filter.tema { 
-    background: #E0F2FE; 
-    color: #0284C7; 
+.badge-filter.tema {
+    background: #E0F2FE;
+    color: #0284C7;
 }
 .badge-filter.search {
     background: #FFFBEB;
     color: #B45309;
 }
-
-
-/* FORMULA GRID & CARDS */
 .formula-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -638,9 +668,8 @@ a {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-/* Stilizare pentru mesajul "Nu au fost găsite" */
 #no-results-message {
-    grid-column: 1 / -1; /* Ocupă tot rândul */
+    grid-column: 1 / -1;
     text-align: center;
     padding: 3rem;
     background: var(--card-bg);
@@ -661,9 +690,9 @@ a {
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    /* Adăugăm bordura de sus */
     border-top-width: 4px;
     border-top-style: solid;
+    padding: 0;
 }
 .formula-card:hover {
     transform: translateY(-4px);
@@ -677,6 +706,8 @@ a {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem;
+    background: transparent;
+    border-bottom: none;
 }
 .card-icon {
     font-size: 0.875rem;
@@ -686,18 +717,19 @@ a {
     align-items: center;
     justify-content: center;
 }
-.formula-card.algebra .card-icon { 
-    background: var(--algebra-light-bg); 
+.formula-card.algebra .card-icon {
+    background: var(--algebra-light-bg);
     color: var(--algebra-light-text);
 }
-.formula-card.geometrie .card-icon { 
-    background: var(--geometrie-light-bg); 
+.formula-card.geometrie .card-icon {
+    background: var(--geometrie-light-bg);
     color: var(--geometrie-light-text);
 }
 
 .card-header h4 {
     font-size: 1.125rem;
     font-weight: 600;
+    margin: 0;
 }
 
 .card-display {
@@ -712,7 +744,6 @@ a {
 .formula-card.algebra .card-display { background: var(--algebra-light-bg); }
 .formula-card.geometrie .card-display { background: var(--geometrie-light-bg); }
 
-/* Watermark icon */
 .card-display::after {
     font-family: var(--font-main);
     position: absolute;
@@ -761,7 +792,8 @@ a {
     padding: 1rem;
     border-top: 1px solid var(--border-light);
     font-size: 0.875rem;
-    margin-top: auto; /* Împinge footer-ul în jos */
+    margin-top: auto;
+    background: transparent;
 }
 .tema-dot {
     width: 8px;
@@ -782,11 +814,11 @@ a {
     font-weight: 500;
     font-size: 0.75rem;
 }
-.badge-domeniu.algebra { 
-    background: var(--algebra-badge-bg); 
-    color: var(--algebra-badge-text); 
+.badge-domeniu.algebra {
+    background: var(--algebra-badge-bg);
+    color: var(--algebra-badge-text);
 }
-.badge-domeniu.geometrie { 
-    background: var(--geometrie-badge-bg); 
-    color: var(--geometrie-badge-text); 
+.badge-domeniu.geometrie {
+    background: var(--geometrie-badge-bg);
+    color: var(--geometrie-badge-text);
 }

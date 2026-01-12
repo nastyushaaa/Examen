@@ -4,527 +4,410 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formule - MathFormule.md</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        @media (max-width: 1023px) {
+            .sidebar {
+                display: none;
+            }
+            .sidebar.active {
+                display: block;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                z-index: 999;
+                overflow-y: auto;
+                padding: 1.5rem;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
 </head>
 <body class="formulas-bg">
 
-    <header class="header-sticky">
-        <a href="index.html" class="btn-back">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Înapoi
-        </a>
-        <div class="logo">
-            <div class="logo-icon">
-                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 2H5C3.34315 2 2 3.34315 2 5V19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V5C22 3.34315 20.6569 2 19 2Z" fill="url(#logo-gradient)"/>
-                    <path d="M15.75 15.75L12 12L15.75 8.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8.25 15.75L12 12L8.25 8.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <defs>
-                        <linearGradient id="logo-gradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#A78BFA"/>
-                            <stop offset="1" stop-color="#EC4899"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-            <span class="logo-text">Formule Matematice</span>
+<header class="header-sticky">
+    <a href="index.html" class="btn-back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="#4B5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Înapoi
+    </a>
+    <div class="logo">
+        <div class="logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 2H5C3.34315 2 2 3.34315 2 5V19C2 20.6569 3.34315 22 5 22H19C20.6569 22 22 20.6569 22 19V5C22 3.34315 20.6569 2 19 2Z" fill="url(#logo-gradient)"/>
+                <path d="M15.75 15.75L12 12L15.75 8.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.25 15.75L12 12L8.25 8.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs>
+                    <linearGradient id="logo-gradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#A78BFA"/>
+                        <stop offset="1" stop-color="#EC4899"/>
+                    </linearGradient>
+                </defs>
+            </svg>
         </div>
-        <button class="btn-filter-mobile">☰ Filtre</button>
-    </header>
-
-    <div class="page-layout">
-
-        <aside class="sidebar">
-            <div class="card card-filters">
-                <div class="filter-group" id="filter-domain">
-                    <h3><span class="icon-emoji">🔮</span> Domeniu</h3>
-                    <button class="btn-filter btn-algebra active" data-filter="algebra">Algebră</button>
-                    <button class="btn-filter btn-geometrie" data-filter="geometrie">Geometrie</button>
-                </div>
-                
-                <div class="filter-group">
-                    <h3><span class="icon-emoji">🏷️</span> Temă</h3>
-                    
-                    <div id="teme-algebra">
-                        <button class="btn-filter-tema active" data-filter="toate" data-category-parent="algebra">Toate temele</button>
-                        <button class="btn-filter-tema" data-filter="calcul-prescurtat" data-category-parent="algebra">Formule de calcul prescurtat</button>
-                        <button class="btn-filter-tema" data-filter="ecuatii" data-category-parent="algebra">Ecuații</button>
-                        <button class="btn-filter-tema" data-filter="proportii" data-category-parent="algebra">Proporții</button>
-                        <button class="btn-filter-tema" data-filter="ecuatii-gradul-doi" data-category-parent="algebra">Ecuații de gradul doi</button>
-                        <button class="btn-filter-tema" data-filter="functii" data-category-parent="algebra">Funcții</button>
-                        <button class="btn-filter-tema" data-filter="puteri-radicali" data-category-parent="algebra">Puteri și radicali</button>
-                    </div>
-
-                    <div id="teme-geometrie" style="display: none;">
-                        <button class="btn-filter-tema active" data-filter="toate" data-category-parent="geometrie">Toate temele</button>
-                        <button class="btn-filter-tema" data-filter="triunghiuri" data-category-parent="geometrie">Triunghiuri</button>
-                        <button class="btn-filter-tema" data-filter="cerc" data-category-parent="geometrie">Cerc</button>
-                        <button class="btn-filter-tema" data-filter="patrulater" data-category-parent="geometrie">Patrulater</button>
-                        <button class="btn-filter-tema" data-filter="volume" data-category-parent="geometrie">Volume</button>
-                    </div>
-                </div>
-
-                <button class="btn-reset" id="reset-filtre">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6L18 18" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Resetează filtrele
-                </button>
-            </div>
-            
-            <div class="card card-quote">
-                <span>⚡</span>
-                <p>"Matematica este limba în care este scris universul."</p>
-                <em>- Galileo Galilei</em>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            
-            <div class="search-bar">
-                <input type="search" id="search-input" placeholder="Caută formule după nume sau conținut...">
-                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21L16.65 16.65" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-
-            <div class="active-filters-bar">
-                <span class="results-count" id="results-count">Găsite: 45 rezultate</span>
-                <div id="active-filters-list">
-                    <span class="badge-filter algebra">Algebră</span>
-                </div>
-            </div>
-
-            <div class="formula-grid" id="formula-grid">
-
-                <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Pătratul sumei</h4></div>
-                    <div class="card-display"><code>(a + b)² = a² + 2ab + b²</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: (x + 3)² = x² + 6x + 9</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Pătratul diferenței</h4></div>
-                    <div class="card-display"><code>(a - b)² = a² - 2ab + b²</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: (x - 5)² = x² - 10x + 25</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Diferența pătratelor</h4></div>
-                    <div class="card-display"><code>a² - b² = (a - b)(a + b)</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: x² - 16 = (x - 4)(x + 4)</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Cubul sumei</h4></div>
-                    <div class="card-display"><code>(a + b)³ = a³ + 3a²b + 3ab² + b³</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: (x + 2)³ = x³ + 6x² + 12x + 8</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Cubul diferenței</h4></div>
-                    <div class="card-display"><code>(a - b)³ = a³ - 3a²b + 3ab² - b³</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: (x - 1)³ = x³ - 3x² + 3x - 1</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Suma cuburilor</h4></div>
-                    <div class="card-display"><code>a³ + b³ = (a + b)(a² - ab + b²)</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: x³ + 8 = (x + 2)(x² - 2x + 4)</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Diferența cuburilor</h4></div>
-                    <div class="card-display"><code>a³ - b³ = (a - b)(a² + ab + b²)</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: x³ - 27 = (x - 3)(x² + 3x + 9)</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-
-                <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Ecuația de gradul întâi</h4></div>
-                    <div class="card-display"><code>ax + b = 0 ⇒ x = -b/a</code></div>
-                    <div class="card-description"><span>💡</span><em>unde a ≠ 0</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-
-                <div class="formula-card algebra" data-category="algebra" data-tema="proportii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Proporția</h4></div>
-                    <div class="card-display"><code>a/b = c/d ⇒ ad = bc</code></div>
-                    <div class="card-description"><span>💡</span><em>Proprietatea fundamentală</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Proporții</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-
-                <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii-gradul-doi">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Ecuația de gradul al doilea</h4></div>
-                    <div class="card-display"><code>ax² + bx + c = 0</code></div>
-                    <div class="card-description"><span>💡</span><em>Forma generală, cu a ≠ 0</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații de gradul doi</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii-gradul-doi">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Discriminantul</h4></div>
-                    <div class="card-display"><code>Δ = b² - 4ac</code></div>
-                    <div class="card-description"><span>💡</span><em>Δ > 0: 2 soluții reale distincte<br>Δ = 0: 1 soluție reală<br>Δ < 0: 0 soluții reale</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații de gradul doi</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii-gradul-doi">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Soluțiile ecuației de gradul doi</h4></div>
-                    <div class="card-display"><code>x₁,₂ = (-b ± √Δ) / 2a</code></div>
-                    <div class="card-description"><span>💡</span><em>Valabil doar când Δ ≥ 0</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații de gradul doi</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii-gradul-doi">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Relațiile lui Viète</h4></div>
-                    <div class="card-display"><code>x₁ + x₂ = -b/a<br>x₁ × x₂ = c/a</code></div>
-                    <div class="card-description"><span>💡</span><em>Suma și produsul rădăcinilor</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații de gradul doi</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-
-                <div class="formula-card algebra" data-category="algebra" data-tema="functii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Funcția liniară</h4></div>
-                    <div class="card-display"><code>f(x) = ax + b</code></div>
-                    <div class="card-description"><span>💡</span><em>Graficul este o linie dreaptă</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="functii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Intersecția cu Ox (Liniară)</h4></div>
-                    <div class="card-display"><code>x = -b/a</code></div>
-                    <div class="card-description"><span>💡</span><em>Punctul de intersecție cu axa Ox: (-b/a, 0). Se rezolvă f(x) = 0.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="functii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Intersecția cu Oy (Liniară)</h4></div>
-                    <div class="card-display"><code>f(0) = b</code></div>
-                    <div class="card-description"><span>💡</span><em>Punctul de intersecție cu axa Oy: (0, b).</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="functii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Funcția pătratică</h4></div>
-                    <div class="card-display"><code>f(x) = ax² + bx + c</code></div>
-                    <div class="card-description"><span>💡</span><em>Graficul este o parabolă. a > 0: ramuri în sus. a < 0: ramuri în jos.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                 <div class="formula-card algebra" data-category="algebra" data-tema="functii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Vârful parabolei</h4></div>
-                    <div class="card-display"><code>x_v = -b/(2a)<br>y_v = -Δ/(4a)</code></div>
-                    <div class="card-description"><span>💡</span><em>Coordonatele vârfului parabolei: V(x_v, y_v).</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="functii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Intersecția cu Ox (Pătratică)</h4></div>
-                    <div class="card-display"><code>ax² + bx + c = 0</code></div>
-                    <div class="card-description"><span>💡</span><em>Soluțiile ecuației f(x) = 0 (x₁, x₂) sunt punctele de intersecție cu axa Ox.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="functii">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Intersecția cu Oy (Pătratică)</h4></div>
-                    <div class="card-display"><code>f(0) = c</code></div>
-                    <div class="card-description"><span>💡</span><em>Punctul de intersecție cu axa Oy: (0, c).</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Înmulțirea puterilor</h4></div>
-                    <div class="card-display"><code>aᵐ × aⁿ = aᵐ⁺ⁿ</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: 2³ × 2² = 2⁵ = 32</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Împărțirea puterilor</h4></div>
-                    <div class="card-display"><code>aᵐ : aⁿ = aᵐ⁻ⁿ</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: 3⁵ : 3³ = 3² = 9</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Ridicarea la putere</h4></div>
-                    <div class="card-display"><code>(aᵐ)ⁿ = aᵐˣⁿ</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: (2³) ² = 2⁶ = 64</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Ridicarea produsului</h4></div>
-                    <div class="card-display"><code>(a × b)ⁿ = aⁿ × bⁿ</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: (2 × 3)² = 2² × 3² = 4 × 9 = 36</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Ridicarea raportului</h4></div>
-                    <div class="card-display"><code>(a/b)ⁿ = aⁿ/bⁿ</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: (4/2)² = 4²/2² = 16/4 = 4</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Puterea cu exponent zero</h4></div>
-                    <div class="card-display"><code>a⁰ = 1</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: 5⁰ = 1, unde a ≠ 0</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Puterea cu exponent negativ</h4></div>
-                    <div class="card-display"><code>a⁻ⁿ = 1/aⁿ</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: 2⁻³ = 1/2³ = 1/8</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Înmulțirea radicalilor</h4></div>
-                    <div class="card-display"><code>√a × √b = √(a × b)</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: √2 × √8 = √16 = 4</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Împărțirea radicalilor</h4></div>
-                    <div class="card-display"><code>√a : √b = √(a/b)</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: √50 : √2 = √25 = 5</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Ridicarea radicalului</h4></div>
-                    <div class="card-display"><code>(√a)ⁿ = a^(n/2)</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: (√3)² = 3</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-                <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
-                    <div class="card-header"><span class="card-icon">🧮</span><h4>Extragerea factorului</h4></div>
-                    <div class="card-display"><code>√(a² × b) = a√b</code></div>
-                    <div class="card-description"><span>💡</span><em>Exemplu: √12 = √(4 × 3) = 2√3</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
-                </div>
-
-
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Suma unghiurilor</h4></div>
-                    <div class="card-display"><code>∠A + ∠B + ∠C = 180°</code></div>
-                    <div class="card-description"><span>💡</span><em>Suma unghiurilor interne ale oricărui triunghi.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Teorema unghiului exterior</h4></div>
-                    <div class="card-display"><code>∠ext = ∠A + ∠B</code></div>
-                    <div class="card-description"><span>💡</span><em>Unghiul exterior este egal cu suma celor două unghiuri interne neadiacente.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Aria triunghiului</h4></div>
-                    <div class="card-display"><code>A = (b × h) / 2</code></div>
-                    <div class="card-description"><span>💡</span><em>Aria = (baza × înălțimea) / 2</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Teorema lui Pitagora</h4></div>
-                    <div class="card-display"><code>a² + b² = c²</code></div>
-                    <div class="card-description"><span>💡</span><em>Doar în triunghiuri dreptunghice. a, b = catete, c = ipotenuza.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Formula lui Heron</h4></div>
-                    <div class="card-display"><code>A = √[p(p-a)(p-b)(p-c)]</code></div>
-                    <div class="card-description"><span>💡</span><em>p = semiperimetrul (a+b+c)/2</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="cerc">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Perimetrul cercului</h4></div>
-                    <div class="card-display"><code>P = 2πr</code></div>
-                    <div class="card-description"><span>💡</span><em>Numit și "Lungimea cercului". r = raza.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Cerc</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="cerc">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Aria cercului</h4></div>
-                    <div class="card-display"><code>A = πr²</code></div>
-                    <div class="card-description"><span>💡</span><em>r = raza.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Cerc</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="cerc">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Lungimea cercului (diametru)</h4></div>
-                    <div class="card-display"><code>L = πd</code></div>
-                    <div class="card-description"><span>💡</span><em>d = diametrul (d = 2r)</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Cerc</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="cerc">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Aria sectorului circular</h4></div>
-                    <div class="card-display"><code>A = (πr²n) / 360°</code></div>
-                    <div class="card-description"><span>💡</span><em>n = măsura unghiului (în grade).</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Cerc</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="patrulater">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Aria trapezului</h4></div>
-                    <div class="card-display"><code>A = [(B + b) × h] / 2</code></div>
-                    <div class="card-description"><span>💡</span><em>B = baza mare, b = baza mică, h = înălțimea.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Patrulater</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="patrulater">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Aria paralelogramului</h4></div>
-                    <div class="card-display"><code>A = b × h</code></div>
-                    <div class="card-description"><span>💡</span><em>b = baza, h = înălțimea.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Patrulater</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="patrulater">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Aria rombului</h4></div>
-                    <div class="card-display"><code>A = (d₁ × d₂) / 2</code></div>
-                    <div class="card-description"><span>💡</span><em>d₁ și d₂ = diagonalele.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Patrulater</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="volume">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Volumul cubului</h4></div>
-                    <div class="card-display"><code>V = a³</code></div>
-                    <div class="card-description"><span>💡</span><em>a = latura.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Volume</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                <div class="formula-card geometrie" data-category="geometrie" data-tema="volume">
-                    <div class="card-header"><span class="card-icon">📐</span><h4>Volumul paralelipipedului</h4></div>
-                    <div class="card-display"><code>V = L × l × h</code></div>
-                    <div class="card-description"><span>💡</span><em>L = lungime, l = lățime, h = înălțime.</em></div>
-                    <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Volume</span><span class="badge-domeniu geometrie">Geometrie</span></div>
-                </div>
-                
-                <div id="no-results-message" style="display: none;">
-                    <h3>Nu au fost găsite formule</h3>
-                    <p>Încearcă să schimbi filtrele sau termenul de căutare.</p>
-                </div>
-
-            </div>
-        </main>
+        <span class="logo-text">Formule Matematice</span>
     </div>
+    <button class="btn-filter-mobile" id="mobile-filter-toggle">☰ Filtre</button>
+</header>
 
+<div class="page-layout">
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
+    <aside class="sidebar" id="sidebar">
+        <div class="card card-filters">
+            <div class="filter-group" id="filter-domain">
+                <h3><span class="icon-emoji">🔮</span> Domeniu</h3>
+                <button class="btn-filter btn-algebra active" data-filter="algebra">Algebră</button>
+                <button class="btn-filter btn-geometrie" data-filter="geometrie">Geometrie</button>
+            </div>
 
-            const domainFilters = document.getElementById('filter-domain');
-            const temeAlgebra = document.getElementById('teme-algebra');
-            const temeGeometrie = document.getElementById('teme-geometrie');
-            const formulaGrid = document.getElementById('formula-grid');
-            const allCards = Array.from(formulaGrid.getElementsByClassName('formula-card'));
-            const searchInput = document.getElementById('search-input');
-            const resultsCount = document.getElementById('results-count');
-            const activeFiltersList = document.getElementById('active-filters-list');
-            const noResultsMessage = document.getElementById('no-results-message');
-            const resetBtn = document.getElementById('reset-filtre');
+            <div class="filter-group">
+                <h3><span class="icon-emoji">🏷️</span> Temă</h3>
 
-            let currentDomain = 'algebra';
-            let currentTema = 'toate';
-            let currentSearch = '';
+                <div id="teme-algebra">
+                    <button class="btn-filter-tema active" data-filter="toate" data-category-parent="algebra">Toate temele</button>
+                    <button class="btn-filter-tema" data-filter="calcul-prescurtat" data-category-parent="algebra">Formule de calcul prescurtat</button>
+                    <button class="btn-filter-tema" data-filter="ecuatii" data-category-parent="algebra">Ecuații</button>
+                    <button class="btn-filter-tema" data-filter="proportii" data-category-parent="algebra">Proporții</button>
+                    <button class="btn-filter-tema" data-filter="ecuatii-gradul-doi" data-category-parent="algebra">Ecuații de gradul doi</button>
+                    <button class="btn-filter-tema" data-filter="functii" data-category-parent="algebra">Funcții</button>
+                    <button class="btn-filter-tema" data-filter="puteri-radicali" data-category-parent="algebra">Puteri și radicali</button>
+                </div>
 
+                <div id="teme-geometrie" style="display: none;">
+                    <button class="btn-filter-tema active" data-filter="toate" data-category-parent="geometrie">Toate temele</button>
+                    <button class="btn-filter-tema" data-filter="triunghiuri" data-category-parent="geometrie">Triunghiuri</button>
+                    <button class="btn-filter-tema" data-filter="cerc" data-category-parent="geometrie">Cerc</button>
+                    <button class="btn-filter-tema" data-filter="patrulater" data-category-parent="geometrie">Patrulater</button>
+                    <button class="btn-filter-tema" data-filter="volume" data-category-parent="geometrie">Volume</button>
+                </div>
+            </div>
 
-            function applyFilters() {
-                let count = 0;
-                
-                allCards.forEach(card => {
-                    const cardDomain = card.dataset.category;
-                    const cardTema = card.dataset.tema;
-                    const cardText = card.textContent.toLowerCase();
+            <button class="btn-reset" id="reset-filtre">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6L18 18" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Resetează filtrele
+            </button>
+        </div>
 
-                    const domainMatch = cardDomain === currentDomain;
-                    const temaMatch = (currentTema === 'toate') || (cardTema === currentTema);
-                    const searchMatch = (currentSearch === '') || cardText.includes(currentSearch);
-                    
-                    if (domainMatch && temaMatch && searchMatch) {
-                        card.style.display = 'flex';
-                        count++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+        <div class="card card-quote">
+            <span>⚡</span>
+            <p>"Matematica este limba în care este scris universul."</p>
+            <em>- Galileo Galilei</em>
+        </div>
+    </aside>
 
-                resultsCount.textContent = `Găsite: ${count} rezultate`;
-                noResultsMessage.style.display = (count === 0) ? 'block' : 'none';
-                updateActiveFilterBadges();
-            }
+    <main class="main-content">
 
-            function updateActiveFilterBadges() {
-                activeFiltersList.innerHTML = '';
+        <div class="search-bar">
+            <input type="search" id="search-input" placeholder="Caută formule după nume sau conținut...">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21L16.65 16.65" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
 
-                const domainBadge = document.createElement('span');
-                domainBadge.classList.add('badge-filter', currentDomain);
-                domainBadge.textContent = currentDomain.charAt(0).toUpperCase() + currentDomain.slice(1);
-                activeFiltersList.appendChild(domainBadge);
+        <div class="active-filters-bar">
+            <span class="results-count" id="results-count">Găsite: 45 rezultate</span>
+            <div id="active-filters-list">
+                <span class="badge-filter algebra">Algebră</span>
+            </div>
+        </div>
 
-                if (currentTema !== 'toate') {
-                    const temaBadge = document.createElement('span');
-                    temaBadge.classList.add('badge-filter', 'tema');
+        <div class="formula-grid" id="formula-grid">
 
-                    const activeTemaBtn = document.querySelector(`.btn-filter-tema[data-filter="${currentTema}"]`);
-                    temaBadge.textContent = activeTemaBtn ? activeTemaBtn.textContent : currentTema;
-                    
-                    activeFiltersList.appendChild(temaBadge);
-                }
+            <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Pătratul sumei</h4></div>
+                <div class="card-display"><code>(a + b)² = a² + 2ab + b²</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: (x + 3)² = x² + 6x + 9</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Pătratul diferenței</h4></div>
+                <div class="card-display"><code>(a - b)² = a² - 2ab + b²</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: (x - 5)² = x² - 10x + 25</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Diferența pătratelor</h4></div>
+                <div class="card-display"><code>a² - b² = (a - b)(a + b)</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: x² - 16 = (x - 4)(x + 4)</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Cubul sumei</h4></div>
+                <div class="card-display"><code>(a + b)³ = a³ + 3a²b + 3ab² + b³</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: (x + 2)³ = x³ + 6x² + 12x + 8</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Cubul diferenței</h4></div>
+                <div class="card-display"><code>(a - b)³ = a³ - 3a²b + 3ab² - b³</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: (x - 1)³ = x³ - 3x² + 3x - 1</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Suma cuburilor</h4></div>
+                <div class="card-display"><code>a³ + b³ = (a + b)(a² - ab + b²)</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: x³ + 8 = (x + 2)(x² - 2x + 4)</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="calcul-prescurtat">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Diferența cuburilor</h4></div>
+                <div class="card-display"><code>a³ - b³ = (a - b)(a² + ab + b²)</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: x³ - 27 = (x - 3)(x² + 3x + 9)</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Calcul prescurtat</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
 
-                if (currentSearch !== '') {
-                     const searchBadge = document.createElement('span');
-                     searchBadge.classList.add('badge-filter', 'search');
-                     searchBadge.textContent = `Căutare: "${currentSearch}"`;
-                     activeFiltersList.appendChild(searchBadge);
-                }
-            }
+            <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Ecuația de gradul întâi</h4></div>
+                <div class="card-display"><code>ax + b = 0 ⇒ x = -b/a</code></div>
+                <div class="card-description"><span>💡</span><em>unde a ≠ 0</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
 
+            <div class="formula-card algebra" data-category="algebra" data-tema="proportii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Proporția</h4></div>
+                <div class="card-display"><code>a/b = c/d ⇒ ad = bc</code></div>
+                <div class="card-description"><span>💡</span><em>Proprietatea fundamentală</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Proporții</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
 
-            domainFilters.addEventListener('click', (e) => {
-                if (e.target.tagName !== 'BUTTON') return;
+            <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii-gradul-doi">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Ecuația de gradul al doilea</h4></div>
+                <div class="card-display"><code>ax² + bx + c = 0</code></div>
+                <div class="card-description"><span>💡</span><em>Forma generală, cu a ≠ 0</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații de gradul doi</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii-gradul-doi">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Discriminantul</h4></div>
+                <div class="card-display"><code>Δ = b² - 4ac</code></div>
+                <div class="card-description"><span>💡</span><em>Δ > 0: 2 soluții reale distincte<br>Δ = 0: 1 soluție reală<br>Δ < 0: 0 soluții reale</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații de gradul doi</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii-gradul-doi">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Soluțiile ecuației de gradul doi</h4></div>
+                <div class="card-display"><code>x₁,₂ = (-b ± √Δ) / 2a</code></div>
+                <div class="card-description"><span>💡</span><em>Valabil doar când Δ ≥ 0</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații de gradul doi</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="ecuatii-gradul-doi">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Relațiile lui Viète</h4></div>
+                <div class="card-display"><code>x₁ + x₂ = -b/a<br>x₁ × x₂ = c/a</code></div>
+                <div class="card-description"><span>💡</span><em>Suma și produsul rădăcinilor</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Ecuații de gradul doi</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
 
-                const newDomain = e.target.dataset.filter;
-                if (newDomain === currentDomain) return;
-                
-                currentDomain = newDomain;
-                currentTema = 'toate';
+            <div class="formula-card algebra" data-category="algebra" data-tema="functii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Funcția liniară</h4></div>
+                <div class="card-display"><code>f(x) = ax + b</code></div>
+                <div class="card-description"><span>💡</span><em>Graficul este o linie dreaptă</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="functii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Intersecția cu Ox (Liniară)</h4></div>
+                <div class="card-display"><code>x = -b/a</code></div>
+                <div class="card-description"><span>💡</span><em>Punctul de intersecție cu axa Ox: (-b/a, 0). Se rezolvă f(x) = 0.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="functii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Intersecția cu Oy (Liniară)</h4></div>
+                <div class="card-display"><code>f(0) = b</code></div>
+                <div class="card-description"><span>💡</span><em>Punctul de intersecție cu axa Oy: (0, b).</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="functii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Funcția pătratică</h4></div>
+                <div class="card-display"><code>f(x) = ax² + bx + c</code></div>
+                <div class="card-description"><span>💡</span><em>Graficul este o parabolă. a > 0: ramuri în sus. a < 0: ramuri în jos.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="functii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Vârful parabolei</h4></div>
+                <div class="card-display"><code>x_v = -b/(2a)<br>y_v = -Δ/(4a)</code></div>
+                <div class="card-description"><span>💡</span><em>Coordonatele vârfului parabolei: V(x_v, y_v).</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="functii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Intersecția cu Ox (Pătratică)</h4></div>
+                <div class="card-display"><code>ax² + bx + c = 0</code></div>
+                <div class="card-description"><span>💡</span><em>Soluțiile ecuației f(x) = 0 (x₁, x₂) sunt punctele de intersecție cu axa Ox.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="functii">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Intersecția cu Oy (Pătratică)</h4></div>
+                <div class="card-display"><code>f(0) = c</code></div>
+                <div class="card-description"><span>💡</span><em>Punctul de intersecție cu axa Oy: (0, c).</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Funcții</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
 
-                domainFilters.querySelectorAll('.btn-filter').forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Înmulțirea puterilor</h4></div>
+                <div class="card-display"><code>aᵐ × aⁿ = aᵐ⁺ⁿ</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: 2³ × 2² = 2⁵ = 32</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Împărțirea puterilor</h4></div>
+                <div class="card-display"><code>aᵐ : aⁿ = aᵐ⁻ⁿ</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: 3⁵ : 3³ = 3² = 9</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Ridicarea la putere</h4></div>
+                <div class="card-display"><code>(aᵐ)ⁿ = aᵐˣⁿ</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: (2³) ² = 2⁶ = 64</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Ridicarea produsului</h4></div>
+                <div class="card-display"><code>(a × b)ⁿ = aⁿ × bⁿ</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: (2 × 3)² = 2² × 3² = 4 × 9 = 36</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Ridicarea raportului</h4></div>
+                <div class="card-display"><code>(a/b)ⁿ = aⁿ/bⁿ</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: (4/2)² = 4²/2² = 16/4 = 4</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Puterea cu exponent zero</h4></div>
+                <div class="card-display"><code>a⁰ = 1</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: 5⁰ = 1, unde a ≠ 0</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Puterea cu exponent negativ</h4></div>
+                <div class="card-display"><code>a⁻ⁿ = 1/aⁿ</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: 2⁻³ = 1/2³ = 1/8</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Înmulțirea radicalilor</h4></div>
+                <div class="card-display"><code>√a × √b = √(a × b)</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: √2 × √8 = √16 = 4</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Împărțirea radicalilor</h4></div>
+                <div class="card-display"><code>√a : √b = √(a/b)</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: √50 : √2 = √25 = 5</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Ridicarea radicalului</h4></div>
+                <div class="card-display"><code>(√a)ⁿ = a^(n/2)</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: (√3)² = 3</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
+            <div class="formula-card algebra" data-category="algebra" data-tema="puteri-radicali">
+                <div class="card-header"><span class="card-icon">🧮</span><h4>Extragerea factorului</h4></div>
+                <div class="card-display"><code>√(a² × b) = a√b</code></div>
+                <div class="card-description"><span>💡</span><em>Exemplu: √12 = √(4 × 3) = 2√3</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Puteri și radicali</span><span class="badge-domeniu algebra">Algebră</span></div>
+            </div>
 
-                if (currentDomain === 'algebra') {
-                    temeAlgebra.style.display = 'block';
-                    temeGeometrie.style.display = 'none';
-                    temeAlgebra.querySelectorAll('.btn-filter-tema').forEach(btn => btn.classList.remove('active'));
-                    temeAlgebra.querySelector('[data-filter="toate"]').classList.add('active');
-                } else {
-                    temeAlgebra.style.display = 'none';
-                    temeGeometrie.style.display = 'block';
-                    temeGeometrie.querySelectorAll('.btn-filter-tema').forEach(btn => btn.classList.remove('active'));
-                    temeGeometrie.querySelector('[data-filter="toate"]').classList.add('active');
-                }
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Suma unghiurilor</h4></div>
+                <div class="card-display"><code>∠A + ∠B + ∠C = 180°</code></div>
+                <div class="card-description"><span>💡</span><em>Suma unghiurilor interne ale oricărui triunghi.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Teorema unghiului exterior</h4></div>
+                <div class="card-display"><code>∠ext = ∠A + ∠B</code></div>
+                <div class="card-description"><span>💡</span><em>Unghiul exterior este egal cu suma celor două unghiuri interne neadiacente.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Aria triunghiului</h4></div>
+                <div class="card-display"><code>A = (b × h) / 2</code></div>
+                <div class="card-description"><span>💡</span><em>Aria = (baza × înălțimea) / 2</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Teorema lui Pitagora</h4></div>
+                <div class="card-display"><code>a² + b² = c²</code></div>
+                <div class="card-description"><span>💡</span><em>Doar în triunghiuri dreptunghice. a, b = catete, c = ipotenuza.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="triunghiuri">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Formula lui Heron</h4></div>
+                <div class="card-display"><code>A = √[p(p-a)(p-b)(p-c)]</code></div>
+                <div class="card-description"><span>💡</span><em>p = semiperimetrul (a+b+c)/2</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Triunghiuri</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
 
-                applyFilters();
-            });
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="cerc">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Perimetrul cercului</h4></div>
+                <div class="card-display"><code>P = 2πr</code></div>
+                <div class="card-description"><span>💡</span><em>Numit și "Lungimea cercului". r = raza.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Cerc</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="cerc">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Aria cercului</h4></div>
+                <div class="card-display"><code>A = πr²</code></div>
+                <div class="card-description"><span>💡</span><em>r = raza.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Cerc</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="cerc">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Lungimea cercului (diametru)</h4></div>
+                <div class="card-display"><code>L = πd</code></div>
+                <div class="card-description"><span>💡</span><em>d = diametrul (d = 2r)</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Cerc</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="cerc">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Aria sectorului circular</h4></div>
+                <div class="card-display"><code>A = (πr²n) / 360°</code></div>
+                <div class="card-description"><span>💡</span><em>n = măsura unghiului (în grade).</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Cerc</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
 
-            function handleTemaClick(e) {
-                if (e.target.tagName !== 'BUTTON') return;
-                
-                currentTema = e.target.dataset.filter;
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="patrulater">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Aria trapezului</h4></div>
+                <div class="card-display"><code>A = [(B + b) × h] / 2</code></div>
+                <div class="card-description"><span>💡</span><em>B = baza mare, b = baza mică, h = înălțimea.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Patrulater</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="patrulater">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Aria paralelogramului</h4></div>
+                <div class="card-display"><code>A = b × h</code></div>
+                <div class="card-description"><span>💡</span><em>b = baza, h = înălțimea.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Patrulater</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="patrulater">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Aria rombului</h4></div>
+                <div class="card-display"><code>A = (d₁ × d₂) / 2</code></div>
+                <div class="card-description"><span>💡</span><em>d₁ și d₂ = diagonalele.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Patrulater</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
 
-                e.target.parentElement.querySelectorAll('.btn-filter-tema').forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
-                
-                applyFilters();
-            }
-            
-            temeAlgebra.addEventListener('click', handleTemaClick);
-            temeGeometrie.addEventListener('click', handleTemaClick);
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="volume">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Volumul cubului</h4></div>
+                <div class="card-display"><code>V = a³</code></div>
+                <div class="card-description"><span>💡</span><em>a = latura.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Volume</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
+            <div class="formula-card geometrie" data-category="geometrie" data-tema="volume">
+                <div class="card-header"><span class="card-icon">📐</span><h4>Volumul paralelipipedului</h4></div>
+                <div class="card-display"><code>V = L × l × h</code></div>
+                <div class="card-description"><span>💡</span><em>L = lungime, l = lățime, h = înălțime.</em></div>
+                <div class="card-footer"><span class="tema-dot"></span><span class="tema-nume">Volume</span><span class="badge-domeniu geometrie">Geometrie</span></div>
+            </div>
 
-            searchInput.addEventListener('input', (e) => {
-                currentSearch = e.target.value.toLowerCase().trim();
-                applyFilters();
-            });
+            <div id="no-results-message" style="display: none;">
+                <h3>Nu au fost găsite formule</h3>
+                <p>Încearcă să schimbi filtrele sau termenul de căutare.</p>
+            </div>
 
-            resetBtn.addEventListener('click', () => {
-                currentDomain = 'algebra';
-                currentTema = 'toate';
-                currentSearch = '';
-                searchInput.value = '';
+        </div>
+    </main>
+</div>
 
-                domainFilters.querySelector('.btn-geometrie').classList.remove('active');
-                domainFilters.querySelector('.btn-algebra').classList.add('active');
-
-                temeAlgebra.style.display = 'block';
-                temeGeometrie.style.display = 'none';
-                temeAlgebra.querySelectorAll('.btn-filter-tema').forEach(btn => btn.classList.remove('active'));
-                temeAlgebra.querySelector('[data-filter="toate"]').classList.add('active');
-                
-                temeGeometrie.querySelectorAll('.btn-filter-tema').forEach(btn => btn.classList.remove('active'));
-                temeGeometrie.querySelector('[data-filter="toate"]').classList.add('active');
-
-                applyFilters();
-            });
-
-            applyFilters();
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
